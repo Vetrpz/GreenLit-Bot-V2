@@ -1,4 +1,12 @@
 require('dotenv').config();
+
+// Express server for Render health checks
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+app.get('/', (req, res) => res.send('OK'));
+app.listen(port, () => console.log(`Health check server listening on ${port}`));
+
 const { Client, GatewayIntentBits } = require('discord.js');
 const axios = require('axios');
 const createLogger = require('./logger');
